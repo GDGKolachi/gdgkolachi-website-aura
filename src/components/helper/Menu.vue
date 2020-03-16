@@ -1,42 +1,41 @@
 <template>
-  <v-menu v-model="menu" :close-on-content-click="false" :nudge-width="200" offset-x>
-    <template v-slot:activator="{ on }">
-      <v-btn dark icon v-on="on">
-        <!-- <v-icon>mdi-dots-vertical</v-icon> -->
-        Click me
-      </v-btn>
-    </template>
-
-    <v-card>
-      <v-list>
-        <v-list-item>
-          <v-list-item-avatar>
-            <img :src="user.photoURL" alt="profile-photo" />
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title>{{user.displayName}}</v-list-item-title>
-            <v-list-item-subtitle>{{user.email}}</v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-
-      <v-divider></v-divider>
-
-      <v-list>
-        <v-list-item>
-          <v-list-item-action>
-            <v-btn
+  <div class="text-xs-center">
+    <v-menu
+      :close-on-content-click="false"
+      :nudge-width="200"
+      v-model="menu"
+      offset-x
+    >
+      <!-- <v-btn slot="activator" color="indigo" dark>Profile</v-btn> -->
+      <v-icon slot="activator">more_vert</v-icon>
+      <v-card>
+        <v-list>
+          <v-list-tile avatar>
+            <v-list-tile-avatar>
+              <img :src="user.photoURL" alt="profile-photo" />
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>{{user.displayName}}</v-list-tile-title>
+              <v-list-tile-sub-title>{{user.email}}</v-list-tile-sub-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </v-list>
+        <v-divider></v-divider>
+        <v-list>
+          <v-list-tile>
+            <v-list-tile-action>
+              <v-btn
               class="ml-0 google-font hidden-sm-and-down"
               style="text-transform: capitalize;"
               flat
               @click="logout"
             >Logout</v-btn>
-          </v-list-item-action>
-        </v-list-item>
-      </v-list>
-    </v-card>
-  </v-menu>
+            </v-list-tile-action>
+          </v-list-tile>
+        </v-list>
+      </v-card>
+    </v-menu>
+  </div>
 </template>
 
 <script>
@@ -45,10 +44,7 @@ export default {
   data() {
     return {
       user: {},
-      fav: true,
       menu: false,
-      message: false,
-      hints: true
     };
   },
   methods: {
